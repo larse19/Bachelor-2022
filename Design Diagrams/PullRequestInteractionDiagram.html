@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <div class="mermaid">
+        sequenceDiagram
+        autonumber
+        actor dig as Digizuite
+        participant git as :GitHub
+        participant pip as :Pull Request Pipeline
+
+        dig ->> git: Create Pull Request
+        activate git
+        git -) pip: Begin
+        git -) dig: Review changes
+        activate pip
+        pip ->> pip: Convert macros
+        pip ->> pip: Convert markdown
+        pip -->> git: Return Preview
+        alt  Accept changes
+          dig -->> git: Accept
+          git ->> pip: Merge accepted
+          pip ->> pip: Store files to volume
+          pip -->> git: Completed
+          deactivate pip
+          git -->> dig: Ready for merge
+        else Decline changes  
+          dig -->> git: Decline
+          git ->> git: Cancel pull request
+        end
+        deactivate git
+        
+    </div>
+
+  
+    <script>
+      mermaid.ganttConfig = {
+          titleTopMargin:25,
+          barHeight:30,
+          barGap:6,
+          topPadding:40,
+          sidePadding:10
+        }
+
+      var config = {
+        startOnLoad:true,
+        securityLevel:'loose',
+      };
+      mermaid.initialize(config);
+    </script>
+</body>
+</html>

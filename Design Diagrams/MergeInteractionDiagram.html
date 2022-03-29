@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <div class="mermaid">
+        sequenceDiagram
+        actor dig as Digizuite
+        participant git as :GitHub
+        participant pip as :Merge Pipeline
+        participant conf as :Confluence
+
+        dig ->> git: Merge changes into master
+        activate git
+        git ->> pip: Begin
+        activate pip
+        alt If Attachments needs uploading
+          pip ->> conf: Get Attachments
+          activate conf
+          conf -->> pip: Return Attachments
+          alt Attachments exists on confluence
+            pip ->> conf: Update existing Attachments
+          else Attachments don't exist on Confluence
+            pip ->> conf: Upload new Attachments
+          end
+        end
+        pip ->> conf: Upload HTML
+        alt Upload Succesfull
+          conf -->> pip: 200 OK
+          pip -->> git: Upload complete
+          git -->> dig: Merge complete
+        else Upload not successfull
+          conf -->> pip: 400 Bad Request
+          pip -->> git: Failed
+          git -->> dig: Merge failed
+          deactivate conf
+        end
+        deactivate pip
+        deactivate git
+
+    
+        
+    </div>
+
+  
+    <script>
+      mermaid.ganttConfig = {
+          titleTopMargin:25,
+          barHeight:30,
+          barGap:6,
+          topPadding:40,
+          sidePadding:10
+        }
+
+      var config = {
+        startOnLoad:true,
+        securityLevel:'loose',
+      };
+      mermaid.initialize(config);
+    </script>
+</body>
+</html>

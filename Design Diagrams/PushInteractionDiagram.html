@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <div class="mermaid">
+        sequenceDiagram
+        actor dig as Digizuite
+        participant git as :GitHub
+        participant pip as :Verification pipeline
+
+        dig ->> git: Push changes
+        activate git
+        git ->> pip: Begin
+        activate pip
+        pip ->> pip: Verify valid markdown syntax
+        pip ->> pip: Verify macros
+        alt Valid syntax
+            pip -->> git: Varified
+            git -->> dig: Push completed
+        else Invalid syntax
+            pip -->> git: SyntaxError
+            git -->> dig: Push failed
+        end
+        deactivate pip
+        deactivate git
+    
+        
+    </div>
+
+  
+    <script>
+      mermaid.ganttConfig = {
+          titleTopMargin:25,
+          barHeight:30,
+          barGap:6,
+          topPadding:40,
+          sidePadding:10
+        }
+
+      var config = {
+        startOnLoad:true,
+        securityLevel:'loose',
+      };
+      mermaid.initialize(config);
+    </script>
+</body>
+</html>
