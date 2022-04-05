@@ -1,9 +1,3 @@
-<style>
- #header {
-	color: red;
-}
-</style>
-
 # Header
 
 > paragraph
@@ -56,4 +50,11 @@ Din mor for ægte den her gang
 ```mermaid
 	graph TD
 	A --> B
+	wejfwe
+	ewfmw
+	fwe -------------------------------
+```
+
+```jira ticket
+BAC-18
 ```
