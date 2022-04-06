@@ -1,18 +1,16 @@
 import json
 import codecs
 import requests
-def update_page_content(space_key: str, page_id: str, content: str, ancestor="none"):
 
+def update_page_content(pathname: str, title: str, space_obj,):
+    filename = pathname + "/index"
     template = {
         "version" : {
             "number": 0,
         },
-        "title": "Test page updated from postman again",
+        "title": title,
         "type": "page",
-        "space": {
-            "key": "~955037829",
-            "name": "Anders Larsen"
-        },
+        "space": space_obj,
         "body": {
                 "storage": {
                     "value": "",
@@ -22,16 +20,15 @@ def update_page_content(space_key: str, page_id: str, content: str, ancestor="no
     }
 
     # Remove <!DOCTYPE html> from html file
-    with open("sample_readme.html", "r") as f:
+    with open(f"{filename}.html", "r") as f:
         lines = f.readlines()
-    with open("sample_readme.html", "w") as f:
+    with open(f"{filename}.html", "w") as f:
         for line in lines:
             if line.strip("\n") != "<!DOCTYPE html>":
                 f.write(line)
 
-
     # Load html file into template
-    f = codecs.open("sample_readme.html", 'r', encoding='utf-8')
+    f = codecs.open(f"{filename}.html", 'r', encoding='utf-8')
     template['body']['storage']['value'] = f.read()
 
     url = "https://at-bachelor.atlassian.net/wiki/rest/api/content/1310721"
@@ -50,4 +47,4 @@ def update_page_content(space_key: str, page_id: str, content: str, ancestor="no
     # Upload html to confluence
     put_response = requests.request("PUT", url, headers=headers, data=json.dumps(template))
 
-    print(put_response.text)
+    return(put_response)
