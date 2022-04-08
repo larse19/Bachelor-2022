@@ -56,4 +56,5 @@ Din mor for ægte den her gang
 ```mermaid
 	graph TD
 	A --> B
+	din mor
 ```

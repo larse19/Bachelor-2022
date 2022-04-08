@@ -25,7 +25,7 @@
         Interview Analysis      :after i3, 14d
 
         section Requirements
-        Requirements            :r1, 08-03, 10d
+        Requirements            :r1, 08-03-22, 10d
         Requirements Analysis   :r2, after r1, 3d
 
         section Design
@@ -55,21 +55,8 @@
         Proof Read Report       :crit, after write, 4d
         Handin Report           :milestone, report, 01-06-22, 1d
         
-        click report href "https://www.overleaf.com/project"
-        click cl2 call printArguments("test1", "test2", test3)
-        click cl3 call printTask()
-        
     </div>
-
-  
     <script>
-      var printArguments = function(arg1, arg2, arg3) {
-        alert('printArguments called with arguments: ' + arg1 + ', ' + arg2 + ', ' + arg3);
-      }
-      var printTask = function(taskId) {
-        alert('taskId: ' + taskId);
-      }
-
       mermaid.ganttConfig = {
           titleTopMargin:25,
           barHeight:30,
