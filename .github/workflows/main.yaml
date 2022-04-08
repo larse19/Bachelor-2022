@@ -11,6 +11,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Conversion step
         uses: TTengs/MarkdownToConfluence@v0.3 # Uses an action in the root directory
-        id: hello
+        id: convert
         with:
           fileslocation: './testdocs'
