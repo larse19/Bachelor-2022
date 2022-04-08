@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Conversion step
-        uses: TTengs/MarkdownToConfluence@v0.2 # Uses an action in the root directory
+        uses: TTengs/MarkdownToConfluence@v0.3 # Uses an action in the root directory
         id: hello
         with:
           fileslocation: './testdocs'
