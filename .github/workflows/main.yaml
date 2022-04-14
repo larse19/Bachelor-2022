@@ -10,7 +10,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Conversion step
-        uses: TTengs/MarkdownToConfluence@v0.3 # Uses an action in the root directory
+        env:
+          CONFLUENCE_URL: 'https://space.atlassian.net/wiki'
+          CONFLUENCE_SPACE_ID: '~955037829'
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+        uses: TTengs/MarkdownToConfluence@v1
         id: convert
         with:
           fileslocation: './testdocs'
