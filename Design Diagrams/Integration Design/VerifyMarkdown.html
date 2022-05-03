@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <div class="mermaid">
+        sequenceDiagram
+        participant pip as :Verify Pipeline
+        participant md as :Verify Markdown Script
+
+        pip ->> md: Run script
+        md ->> md: Verify markdown syntax
+        md ->> md: Verify mermaid syntax
+        md ->> md: Verify valid macros
+
+        alt Succes
+          md -->> pip: Correct syntax
+        else Warning
+          md -->> pip: Some macros may not work
+        else Not work
+          md -->> pip: Could not verify syntax
+        end
+        
+    </div>
+
+  
+    <script>
+      mermaid.ganttConfig = {
+          titleTopMargin:25,
+          barHeight:30,
+          barGap:6,
+          topPadding:40,
+          sidePadding:10
+        }
+
+      var config = {
+        startOnLoad:true,
+        securityLevel:'loose',
+      };
+      mermaid.initialize(config);
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <div class="mermaid">
+        sequenceDiagram
+        participant pip as :Pull Request Pipeline
+        participant mermaid as :Convert Mermaid Script
+        participant macro as :Convert Macro Script
+        participant html as :Convert To HTML
+
+        pip ->> mermaid :Convert mermaid blocks to images
+        activate pip
+        activate mermaid
+        mermaid -->> pip :Markdown file with picture links
+        deactivate mermaid
+
+        pip ->> macro :Convert macros to Confluence blocks
+        activate macro
+        macro -->> pip :Markdown file with Jira ticket tags
+        deactivate macro
+
+        pip ->> html :Convert markdown file to HTML
+        activate html
+        html -->> pip :HTML file
+        deactivate html
+        deactivate pip
+    </div>
+
+  
+    <script>
+      mermaid.ganttConfig = {
+          titleTopMargin:25,
+          barHeight:30,
+          barGap:6,
+          topPadding:40,
+          sidePadding:10
+        }
+
+      var config = {
+        startOnLoad:true,
+        securityLevel:'loose',
+      };
+      mermaid.initialize(config);
+    </script>
+</body>
+</html>
