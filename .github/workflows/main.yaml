@@ -15,7 +15,7 @@ jobs:
           CONFLUENCE_SPACE_KEY: 'BP'
           AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
           AUTH_API_TOKEN: ${{ secrets.AUTH_API_TOKEN }}
-        uses: TTengs/MarkdownToConfluence@v2.0.4
+        uses: TTengs/MarkdownToConfluence@v2.1
         id: convert
         with:
           fileslocation: './testdocs'
