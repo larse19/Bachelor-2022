@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Conversion step
         env:
-          CONFLUENCE_URL: 'https://at-bachelor.atlassian.net/wiki'
+          CONFLUENCE_URL: 'https://at-bachelor.atlassian.net'
           CONFLUENCE_SPACE_KEY: 'MAR'
           AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
           AUTH_API_TOKEN: ${{ secrets.AUTH_API_TOKEN }}
