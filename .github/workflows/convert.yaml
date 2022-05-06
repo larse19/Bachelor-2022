@@ -15,13 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: printenv
-      - name: Conversion step
-        uses: TTengs/MarkdownToConfluence@v2.2.3
-        id: convert
-        with:
-          fileslocation: 'testdocs'
-          should_upload: false
-          confluence_url: 'https://at-bachelor.atlassian.net'
-          confluence_space_key: 'BP'
-          auth_username: ${{ secrets.AUTH_USERNAME }}
-          auth_api_token: ${{ secrets.AUTH_API_TOKEN }}
+      - run: apt-get update && apt-get install jq
+      - run: jq .before ${GITHUB_EVENT_PATH}
+      # - name: Conversion step
+      #   uses: TTengs/MarkdownToConfluence@v2.2.3
+      #   id: convert
+      #   with:
+      #     fileslocation: 'testdocs'
+      #     should_upload: false
+      #     confluence_url: 'https://at-bachelor.atlassian.net'
+      #     confluence_space_key: 'BP'
+      #     auth_username: ${{ secrets.AUTH_USERNAME }}
+      #     auth_api_token: ${{ secrets.AUTH_API_TOKEN }}
