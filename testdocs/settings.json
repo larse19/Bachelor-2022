@@ -1,3 +1,6 @@
 {
-    "parent_page": ""
+    "parent_page": "",
+    "modules": {
+        "mermaid": true
+    }
 }
