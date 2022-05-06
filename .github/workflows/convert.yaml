@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: printenv
-      - run: apt-get update && apt-get install jq
+      - run: sudo apt-get update && sudo apt-get install jq
       - run: jq .before ${GITHUB_EVENT_PATH}
       # - name: Conversion step
       #   uses: TTengs/MarkdownToConfluence@v2.2.3
