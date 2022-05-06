@@ -6,9 +6,9 @@ on:
     #   - "testdocs/**"
 
 jobs:
-  push_to_confluence:
+  create-preview:
     runs-on: ubuntu-latest
-    name: Converting Markdown to Confluence
+    name: Uploading Preview
     steps:
       # To use this repository's private action,
       # you must check out the repository
