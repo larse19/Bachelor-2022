@@ -24,9 +24,10 @@ jobs:
           echo ${GITHUB_SHA}
           after=${GITHUB_SHA}
           git fetch origin ${before} --depth=1
+          git fetch origin ${GITHUB_BASE_REF} --depth=1
           echo ${before}
           echo ${after}
-          git --no-pager diff --name-status ${GITHUB_BASE_REF} -- ${INPUT_FILESLOCATION}
+          git --no-pager diff --name-status origin/${GITHUB_BASE_REF} -- ${INPUT_FILESLOCATION}
       # - name: Conversion step
       #   uses: TTengs/MarkdownToConfluence@v2.2.3
       #   id: convert
