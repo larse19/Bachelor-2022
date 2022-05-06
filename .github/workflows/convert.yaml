@@ -18,6 +18,8 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install jq git
       - run: jq .before ${GITHUB_EVENT_PATH}
       - run: |
+          git init
+          git config --global --add safe.directory /github/workspace
           before=$(jq .before ${GITHUB_EVENT_PATH} | tr -d '"')
           echo ${GITHUB_SHA}
           after=${GITHUB_SHA}
