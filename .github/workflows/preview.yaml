@@ -1,0 +1,40 @@
+on:
+  pull_request:
+    branches:
+      - "main"
+    # paths:
+    #   - "testdocs/**"
+
+jobs:
+  push_to_confluence:
+    runs-on: ubuntu-latest
+    name: Converting Markdown to Confluence
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      # - run: printenv
+      # - run: sudo apt-get update && sudo apt-get install jq git
+      # - run: jq .before ${GITHUB_EVENT_PATH}
+      # - run: |
+      #     git init
+      #     git config --global --add safe.directory /github/workspace
+      #     before=$(jq .before ${GITHUB_EVENT_PATH} | tr -d '"')
+      #     echo ${GITHUB_SHA}
+      #     after=${GITHUB_SHA}
+      #     git fetch origin ${before} --depth=1
+      #     git fetch origin ${GITHUB_BASE_REF} --depth=1
+      #     echo ${before}
+      #     echo ${after}
+      #     git --no-pager diff --name-status origin/${GITHUB_BASE_REF} -- ${INPUT_FILESLOCATION}
+      - name: Conversion step
+        uses: TTengs/MarkdownToConfluence@v2.2.5
+        id: convert
+        with:
+          fileslocation: 'testdocs'
+          should_upload: true
+          confluence_url: 'https://at-bachelor.atlassian.net'
+          confluence_space_key: 'BPP'
+          auth_username: ${{ secrets.AUTH_USERNAME }}
+          auth_api_token: ${{ secrets.AUTH_API_TOKEN }}
