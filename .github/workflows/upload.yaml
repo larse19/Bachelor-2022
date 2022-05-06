@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - "main"
-    paths:
-      - "testdocs/**"
+    # paths:
+    #   - "testdocs/**"
 
 jobs:
   push_to_confluence:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Conversion step
-        uses: TTengs/MarkdownToConfluence@v2.2
+        uses: TTengs/MarkdownToConfluence@v2.2.6
         id: convert
         with:
           fileslocation: 'testdocs'
