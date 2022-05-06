@@ -20,7 +20,7 @@ jobs:
       - run: |
           before=$(jq .before ${GITHUB_EVENT_PATH} | tr -d '"')
           echo ${GITHUB_SHA}
-          after=${GITHUB_SHA} | tr -d '"'
+          after=$(${GITHUB_SHA} | tr -d '"')
           git fetch origin ${before} --depth=1
           echo ${before}
           echo ${after}
