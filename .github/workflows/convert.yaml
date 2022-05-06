@@ -24,6 +24,7 @@ jobs:
           git fetch origin ${before} --depth=1
           echo ${before}
           echo ${after}
+          git --no-pager diff --name-status origin/${GITHUB_BASE_REF}...${after} -- ${INPUT_FILESLOCATION}
       # - name: Conversion step
       #   uses: TTengs/MarkdownToConfluence@v2.2.3
       #   id: convert
