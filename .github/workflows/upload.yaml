@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Conversion step
-        uses: TTengs/MarkdownToConfluence@v2.2.6
+        uses: TTengs/MarkdownToConfluence@v3
         id: convert
         with:
           fileslocation: 'docs'

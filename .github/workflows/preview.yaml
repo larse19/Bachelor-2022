@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Conversion step
-        uses: TTengs/MarkdownToConfluence@v2.2.6
+        uses: TTengs/MarkdownToConfluence@v3
         id: convert
         with:
           fileslocation: 'testdocs'
@@ -24,3 +24,4 @@ jobs:
           confluence_space_key: 'BPP'
           auth_username: ${{ secrets.AUTH_USERNAME }}
           auth_api_token: ${{ secrets.AUTH_API_TOKEN }}
+          is_preview: true
