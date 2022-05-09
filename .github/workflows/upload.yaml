@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - "main"
-    # paths:
-    #   - "testdocs/**"
+    paths:
+      - "docs/**"
 
 jobs:
   push_to_confluence:
