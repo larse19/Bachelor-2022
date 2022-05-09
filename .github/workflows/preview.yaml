@@ -18,7 +18,7 @@ jobs:
         uses: TTengs/MarkdownToConfluence@v3
         id: convert
         with:
-          fileslocation: 'testdocs'
+          fileslocation: 'docs'
           should_upload: true
           confluence_url: 'https://at-bachelor.atlassian.net'
           confluence_space_key: 'BPP'
