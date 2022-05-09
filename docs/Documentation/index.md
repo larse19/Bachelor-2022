@@ -1,3 +1,3 @@
 ```TOC
-start-depth=3
+start-depth=2
 ```
